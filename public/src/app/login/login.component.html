@@ -1,0 +1,7 @@
+<h2><a [routerLink]="['']">Home</a> | <a [routerLink]="['/new_question']">Add a Question</a></h2>   <a href="user/logout">Logout</a>
+<div class="container" *ngIf="user">
+  <div class="btn">
+    <button [routerLink]="['/lets_play']">Play</button>
+    <p>Click the button above to start the trivia game</p>
+  </div>
+</div>

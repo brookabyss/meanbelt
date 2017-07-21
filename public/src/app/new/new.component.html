@@ -1,0 +1,48 @@
+<h2><a href="/">Home</a> | <a [routerLink]="['/new_question']">Add a Question</a></h2>   <a href="user/logout">Logout</a>
+
+<h1>New Question</h1>
+<form #questionForm="ngForm"   novalidate>
+  <label for="input_question">Question</label>
+  <textarea 
+      name="input_question" 
+      id="" 
+      required
+      minlength="16"
+      cols="30" 
+      rows="10"
+      [(ngModel)]="question.question"
+      #input_question="ngModel"
+  >
+  </textarea>
+<p *ngIf="input_question.invalid && input_question.touched">Question has to be at least 15 characters in length</p>
+  <label for="correct">Correct Answer </label>
+  <input 
+    type="text"
+    name="correct"
+    required
+    [(ngModel)]="question.correct_answer"
+    #correct="ngModel"
+  >
+  <p *ngIf="correct.invalid && correct.touched">Correct asnwer can't be empty</p>
+  <label for="fakefirst">Fake Answer 1 </label>
+  <input 
+    type="text"
+    name="fakefirst"
+    required
+    [(ngModel)]="question.fake1"
+    #fakefirst="ngModel"
+  >
+  <p *ngIf="fakefirst.invalid && fakefirst.touched">First fake answer can't be empty</p>
+  <label for="fakesecond">Fake Answer 2 </label>
+  <input 
+    type="text"
+    name="fakesecond"
+    required
+    [(ngModel)]="question.fake2"
+    #fakesecond="ngModel"
+  >
+  <p *ngIf="fakesecond.invalid && fakesecond.touched">Second fake answer can't be empty</p><br>
+  <button [disabled]="!questionForm.form.valid" [routerLink]="['']">Cancel</button>
+  <button [disabled]="!questionForm.form.valid" (click)="onSubmit()">Add Question</button>
+
+</form>

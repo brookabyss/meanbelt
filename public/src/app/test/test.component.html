@@ -1,0 +1,14 @@
+
+  <form name="questionForm" #questionForm="ngForm" novalidate>
+  <div *ngFor="let question of test; let i=index">
+  <h2>{{i+1}}.  {{question.question}}</h2>
+    <form #question{{i+1}}="ngForm">
+    <input type="radio"  (click)="answer(i+1,'correct_answer')"  required name="correctanswer{{i+1}}" ><p>{{question.correct_answer}}</p>
+    <input type="radio"   (click)="answer(i+1,'fake1')" required name="fake1{{i+1}}" ><p>{{question.fake1}}</p>
+    <input type="radio"  (click)="answer(i+1,'question.fake2')" required name="fake2{{i+1}}" ><p>{{question.fake2}}</p>
+    </form>
+  
+</div>
+<button [disabled]="questionForm.touched" [routerLink]="['']">Cancel</button>
+<button [disabled]="" (click)="submitTest()">Cancel</button>
+</form>
